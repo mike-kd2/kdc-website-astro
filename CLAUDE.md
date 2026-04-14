@@ -68,7 +68,11 @@ src/
 - **Calendar booking**: TidyCal at `https://tidycal.com/klauserdesigns/prozess-check`
 - **Contact email**: michael@klauserdesigns.ch
 - **Email sending**: Maileroo (API key via `MAILEROO_API_KEY` env var)
-- **Analytics**: Plausible (privacy-friendly, production only)
+- **Analytics**: Matomo (self-hosted at matomo.mannfrausein.com, Site ID 2, production only)
+  - `public/matomo.js` wird von Cloudflare ausgeliefert (kein externer DNS-Lookup)
+  - Tracking-Requests gehen weiterhin an `matomo.mannfrausein.com/matomo.php`
+  - **Wartung**: Nach Matomo-Updates `public/matomo.js` aktualisieren:
+    `curl -s https://matomo.mannfrausein.com/matomo.js -o public/matomo.js`
 
 ## Environment Variables
 
@@ -79,7 +83,6 @@ Set in Cloudflare Pages dashboard (Settings → Environment Variables):
 | `MAILEROO_API_KEY` | Maileroo API key for email sending |
 | `PUBLIC_SITE_URL` | Site URL (https://klauserdesigns.ch) |
 | `PUBLIC_CONTACT_EMAIL` | Contact email address |
-| `PUBLIC_PLAUSIBLE_DOMAIN` | Plausible domain for analytics |
 
 ## Business Context
 
