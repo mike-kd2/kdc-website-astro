@@ -6,6 +6,7 @@ export interface Props {
   pagePath?: string
 }
 
+
 const {
   type = 'website',
   pageTitle,
@@ -29,8 +30,9 @@ const organizationSchema = {
   email: 'michael@klauserdesigns.ch',
   address: {
     '@type': 'PostalAddress',
+    addressLocality: 'St. Gallen',
+    addressRegion: 'SG',
     addressCountry: 'CH',
-    addressRegion: 'Zürich',
   },
   founder: {
     '@type': 'Person',
@@ -103,6 +105,72 @@ const serviceSchema = {
   },
 }
 
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${baseUrl}/#localbusiness`,
+  name: 'klauser designs',
+  url: baseUrl,
+  email: 'michael@klauserdesigns.ch',
+  description:
+    'Freelance Spezialist für Prozessautomatisierung, massgeschneiderte Software und Datenlösungen für Verbände und KMUs in der Deutschschweiz. Selbstständig seit 2013.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'St. Gallen',
+    addressRegion: 'SG',
+    addressCountry: 'CH',
+  },
+  areaServed: { '@type': 'AdministrativeArea', name: 'Deutschschweiz' },
+  priceRange: 'CHF CHF',
+  knowsAbout: [
+    'Prozessautomatisierung',
+    'Datenmigration',
+    'Data Warehouse',
+    'ETL-Pipelines',
+    'Power BI',
+    'Microsoft Dynamics 365',
+    'Python',
+    'C#',
+    'SQL Server',
+    'KI-Integration',
+  ],
+  founder: { '@id': `${baseUrl}/#person` },
+}
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${baseUrl}/#person`,
+  name: 'Michael Klauser',
+  jobTitle: 'Dipl. Systemtechnik-Ingenieur FH',
+  description:
+    'Freelance IT-Spezialist für Prozessautomatisierung, Datenlösungen und massgeschneiderte Software. Selbstständig seit 2013.',
+  url: `${baseUrl}/ueber-mich`,
+  email: 'michael@klauserdesigns.ch',
+  worksFor: { '@id': `${baseUrl}/#organization` },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'St. Gallen',
+    addressCountry: 'CH',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'NTB Buchs — Interstaatliche Hochschule für Technik',
+  },
+  knowsAbout: [
+    'Prozessautomatisierung',
+    'Datenmigration',
+    'Data Warehouse',
+    'SQL Server',
+    'C#',
+    'Python',
+    'Power BI',
+    'Microsoft Dynamics 365',
+    'SAP-Integration',
+    'KI-Integration',
+  ],
+}
+
 const breadcrumbSchema =
   pagePath && pagePath !== '/'
     ? {
@@ -129,8 +197,9 @@ const webPageSchema = {
   inLanguage: 'de-CH',
 }
 
-const schemas: unknown[] = [organizationSchema, websiteSchema, webPageSchema]
+const schemas: unknown[] = [organizationSchema, localBusinessSchema, websiteSchema, webPageSchema]
 if (type === 'service') schemas.push(serviceSchema)
+if (type === 'person') schemas.push(personSchema)
 if (breadcrumbSchema) schemas.push(breadcrumbSchema)
 ---
 
