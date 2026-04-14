@@ -28,8 +28,11 @@ const organizationSchema = {
   description:
     'Automatisierung, massgeschneiderte Tools und Datenlösungen für Schweizer Verbände und KMUs. Spezialisiert auf Prozessautomatisierung, individuelle Software-Entwicklung und Datenintegration.',
   email: 'michael@klauserdesigns.ch',
+  telephone: '+41796915598',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Notkerstrasse 14',
+    postalCode: '9000',
     addressLocality: 'St. Gallen',
     addressRegion: 'SG',
     addressCountry: 'CH',
@@ -112,10 +115,13 @@ const localBusinessSchema = {
   name: 'klauser designs',
   url: baseUrl,
   email: 'michael@klauserdesigns.ch',
+  telephone: '+41796915598',
   description:
     'Freelance Spezialist für Prozessautomatisierung, massgeschneiderte Software und Datenlösungen für Verbände und KMUs in der Deutschschweiz. Selbstständig seit 2013.',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Notkerstrasse 14',
+    postalCode: '9000',
     addressLocality: 'St. Gallen',
     addressRegion: 'SG',
     addressCountry: 'CH',
@@ -150,6 +156,8 @@ const personSchema = {
   worksFor: { '@id': `${baseUrl}/#organization` },
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Notkerstrasse 14',
+    postalCode: '9000',
     addressLocality: 'St. Gallen',
     addressCountry: 'CH',
   },
