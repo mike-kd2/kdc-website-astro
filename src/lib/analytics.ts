@@ -1,7 +1,7 @@
 /**
  * Analytics Event Tracking
  *
- * Provides type-safe event tracking for Plausible Analytics.
+ * Provides type-safe event tracking for Matomo Analytics.
  * Only tracks events in production environment.
  */
 
@@ -16,27 +16,25 @@ export type AnalyticsEvent =
   | 'email_click'
   | 'phone_click';
 
-interface PlausibleEvent {
-  (event: AnalyticsEvent, options?: { props?: Record<string, string | number | boolean> }): void;
-}
-
 /**
- * Track a custom event with Plausible Analytics
+ * Track a custom event with Matomo Analytics
  *
  * @param event - The event name to track
  * @param props - Optional properties to attach to the event
  */
-export const trackEvent: PlausibleEvent = (event, options) => {
+export const trackEvent = (event: AnalyticsEvent, options?: { props?: Record<string, string | number | boolean> }) => {
   // Only track in production
   if (!import.meta.env.PROD) {
     console.log('[Analytics - Dev]', event, options?.props);
     return;
   }
 
-  // Check if Plausible is loaded
-  if (typeof window !== 'undefined' && (window as any).plausible) {
+  // Check if Matomo is loaded
+  if (typeof window !== 'undefined' && (window as any)._paq) {
     try {
-      (window as any).plausible(event, options);
+      const category = 'Interaction';
+      const name = options?.props ? JSON.stringify(options.props) : undefined;
+      (window as any)._paq.push(['trackEvent', category, event, name]);
     } catch (error) {
       console.error('[Analytics Error]', error);
     }

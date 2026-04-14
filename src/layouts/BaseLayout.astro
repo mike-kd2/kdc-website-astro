@@ -86,9 +86,20 @@ const resolvedOgImage = ogImage || DEFAULT_OG_IMAGE
     <meta name="theme-color" content="#0A4D4E" />
     <link rel="alternate" hreflang="de-CH" href={canonicalUrl} />
 
-    <!-- Plausible Analytics (production only) -->
+    <!-- Matomo Analytics (production only) -->
     {import.meta.env.PROD && (
-      <script defer data-domain="klauserdesigns.ch" src="https://plausible.io/js/script.js" />
+      <script>
+        {`var _paq = window._paq = window._paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="https://matomo.mannfrausein.com/";
+          _paq.push(['setTrackerUrl', u+'matomo.php']);
+          _paq.push(['setSiteId', '2']);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();`}
+      </script>
     )}
   </head>
   <body class="font-sans">
