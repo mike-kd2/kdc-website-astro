@@ -88,8 +88,8 @@ const resolvedOgImage = ogImage || DEFAULT_OG_IMAGE
 
     <!-- Matomo Analytics (production only) -->
     {import.meta.env.PROD && (
-      <script>
-        {`var _paq = window._paq = window._paq || [];
+      <script is:inline>
+        var _paq = window._paq = window._paq || [];
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
@@ -98,7 +98,7 @@ const resolvedOgImage = ogImage || DEFAULT_OG_IMAGE
           _paq.push(['setSiteId', '2']);
           var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
           g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-        })();`}
+        })();
       </script>
     )}
   </head>
