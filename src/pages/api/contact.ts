@@ -1,5 +1,3 @@
-export const prerender = false
-
 import type { APIContext } from 'astro'
 import { contactFormSchema } from '../../lib/validations'
 import { sendContactEmail } from '../../lib/email'
