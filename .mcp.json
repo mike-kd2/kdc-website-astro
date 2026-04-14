@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cloudflare": {
+      "type": "sse",
+      "url": "https://mcp.cloudflare.com/mcp"
+    }
+  }
+}
