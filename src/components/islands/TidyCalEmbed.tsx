@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { TIDYCAL_URL } from '../../lib/constants';
 
 interface TidyCalEmbedProps {
@@ -7,72 +7,56 @@ interface TidyCalEmbedProps {
   className?: string;
 }
 
+function getPathFromUrl(url: string): string {
+  try {
+    return new URL(url).pathname.replace(/^\//, '');
+  } catch {
+    return url;
+  }
+}
+
 export const TidyCalEmbed: React.FC<TidyCalEmbedProps> = ({
   url = TIDYCAL_URL,
-  height = 800,
   className = '',
 }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const path = getPathFromUrl(url);
 
-  const handleLoad = () => {
-    setIsLoading(false);
-  };
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
 
-  const handleError = () => {
-    setIsLoading(false);
-    setHasError(true);
-  };
+    // Remove any previously injected script to allow re-init
+    const existingScript = document.querySelector('script[data-tidycal-embed]');
+    if (existingScript) existingScript.remove();
+
+    const script = document.createElement('script');
+    script.src = 'https://asset-tidycal.b-cdn.net//js/embed.js';
+    script.async = true;
+    script.setAttribute('data-tidycal-embed', '');
+    script.onload = () => setIsLoading(false);
+    document.body.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, []);
 
   return (
     <div className={`relative w-full ${className}`}>
-      {/* Loading State */}
       {isLoading && (
-        <div
-          className="absolute inset-0 flex items-center justify-center bg-neutral-off-white"
-          style={{ height: `${height}px` }}
-        >
+        <div className="flex items-center justify-center py-16 bg-neutral-off-white rounded-lg">
           <div className="text-center">
             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-primary border-r-transparent" />
             <p className="mt-4 text-neutral-slate">Kalender wird geladen...</p>
           </div>
         </div>
       )}
-
-      {/* Error State */}
-      {hasError && (
-        <div
-          className="flex items-center justify-center bg-neutral-off-white"
-          style={{ height: `${height}px` }}
-        >
-          <div className="text-center px-4">
-            <p className="text-neutral-charcoal font-medium mb-2">
-              Der Kalender konnte nicht geladen werden.
-            </p>
-            <p className="text-neutral-slate text-sm mb-4">
-              Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.
-            </p>
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:text-primary-light underline"
-            >
-              Kalender in neuem Tab öffnen →
-            </a>
-          </div>
-        </div>
-      )}
-
-      {/* TidyCal Iframe */}
-      <iframe
-        src={url}
-        title="Termin buchen - TidyCal Kalender"
-        className={`w-full border-0 rounded-lg ${isLoading || hasError ? 'invisible' : 'visible'}`}
-        style={{ height: `${height}px`, minHeight: '600px' }}
-        onLoad={handleLoad}
-        onError={handleError}
-        loading="lazy"
+      <div
+        ref={containerRef}
+        className={`tidycal-embed ${isLoading ? 'invisible absolute' : ''}`}
+        data-path={path}
       />
     </div>
   );
