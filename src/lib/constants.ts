@@ -23,8 +23,8 @@ export const SOCIAL_LINKS = {
 
 // Navigation
 export const NAVIGATION_ITEMS = [
-  { label: 'Verbände', href: '/verbaende' },
   { label: 'KMUs', href: '/kmu' },
+  { label: 'Verbände', href: '/verbaende' },
   { label: 'Angebot', href: '/angebot' },
   { label: 'Referenzen', href: '/referenzen' },
   { label: 'Über mich', href: '/ueber-mich' },
