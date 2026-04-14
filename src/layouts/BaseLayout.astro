@@ -32,7 +32,7 @@ const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://klauserdesigns.ch'
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`
 
 const fullTitle = title ? `${title} | klauser designs` : DEFAULT_TITLE
-const canonicalUrl = canonical || SITE_URL
+const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href
 const resolvedOgImage = ogImage || DEFAULT_OG_IMAGE
 ---
 
@@ -81,14 +81,10 @@ const resolvedOgImage = ogImage || DEFAULT_OG_IMAGE
 
     <!-- Additional Meta Tags -->
     <meta name="author" content="Michael Klauser" />
-    <meta name="language" content="German" />
     <meta name="geo.region" content="CH" />
     <meta name="geo.placename" content="Schweiz" />
     <meta name="theme-color" content="#0A4D4E" />
-    <meta name="keywords" content="Automatisierung, Verbände, KMU, Datenlösungen, massgeschneiderte Tools, Prozessautomatisierung, Datenintegration, Reporting, Schweiz, Excel Automatisierung, Datenmigration" />
-    <meta name="abstract" content="Automatisierung, massgeschneiderte Tools und Datenlösungen für Verbände und KMUs in der Schweiz. 20+ Jahre IT-Erfahrung." />
-    <meta name="topic" content="Automatisierung, Datenlösungen, Prozessoptimierung, Tools für Verbände und KMUs" />
-    <meta name="classification" content="Business Services, Automation, Data Solutions" />
+    <link rel="alternate" hreflang="de-CH" href={canonicalUrl} />
 
     <!-- Plausible Analytics (production only) -->
     {import.meta.env.PROD && (
