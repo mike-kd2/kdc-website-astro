@@ -88,7 +88,7 @@ const resolvedOgImage = ogImage || DEFAULT_OG_IMAGE
 
     <!-- Matomo Analytics (production only) -->
     {import.meta.env.PROD && (
-      <script is:inline>
+      <Fragment set:html={`<script>
         var _paq = window._paq = window._paq || [];
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
@@ -99,7 +99,7 @@ const resolvedOgImage = ogImage || DEFAULT_OG_IMAGE
           var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
           g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
         })();
-      </script>
+      </script>`} />
     )}
   </head>
   <body class="font-sans">
