@@ -7,5 +7,11 @@ import icon from 'astro-icon'
 export default defineConfig({
   site: 'https://klauserdesigns.ch',
   output: 'static',
-  integrations: [react(), sitemap(), icon()],
+  integrations: [
+    react(),
+    sitemap({
+      lastmod: new Date(),
+    }),
+    icon(),
+  ],
 })
