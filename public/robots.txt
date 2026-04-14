@@ -89,4 +89,4 @@ User-agent: *
 Allow: /
 
 # ——— SITEMAP ———
-Sitemap: https://klauserdesigns.ch/sitemap.xml
+Sitemap: https://klauserdesigns.ch/sitemap-index.xml
