@@ -1,0 +1,95 @@
+---
+export interface Props {
+  nummer: number
+  titel: string
+  preis: string
+  beschreibung: string
+  details?: string[]
+  ctaText: string
+  ctaHref: string
+  highlight?: boolean
+  badge?: string
+}
+
+const {
+  nummer,
+  titel,
+  preis,
+  beschreibung,
+  details,
+  ctaText,
+  ctaHref,
+  highlight = false,
+  badge,
+} = Astro.props
+---
+
+<div
+  class={`rounded-xl bg-white border shadow-card hover:shadow-card-hover transition-shadow overflow-hidden ${
+    highlight ? 'border-accent/40' : 'border-neutral-light-gray'
+  }`}
+>
+  <!-- Accent bar for highlight -->
+  {highlight && <div class="h-1 bg-accent w-full" />}
+
+  <div class="p-8 flex items-start gap-6">
+    <!-- Step number -->
+    <span class="flex-shrink-0 text-5xl font-bold text-primary/10 leading-none tabular-nums select-none mt-1">
+      {String(nummer).padStart(2, '0')}
+    </span>
+
+    <!-- Content -->
+    <div class="flex-1 min-w-0">
+      {badge && (
+        <p class="text-xs font-bold text-accent uppercase tracking-widest mb-2">
+          {badge}
+        </p>
+      )}
+
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+        <div>
+          <h3 class="text-xl font-bold text-neutral-charcoal">{titel}</h3>
+          <p class={`text-2xl font-bold mt-1 ${highlight ? 'text-accent' : 'text-primary'}`}>
+            {preis}
+          </p>
+        </div>
+        <a href={ctaHref} class="flex-shrink-0 self-start">
+          <button
+            type="button"
+            class={`inline-flex items-center justify-center rounded-md font-medium transition-all shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 text-base px-4 py-2 min-h-[44px] ${
+              highlight
+                ? 'bg-accent text-neutral-charcoal hover:bg-accent-dark'
+                : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
+            }`}
+          >
+            {ctaText}
+          </button>
+        </a>
+      </div>
+
+      <p class="text-neutral-slate leading-relaxed mb-5">{beschreibung}</p>
+
+      {details && details.length > 0 && (
+        <ul class="flex flex-col gap-2">
+          {details.map((item) => (
+            <li class="flex items-start gap-2">
+              <svg
+                class="mt-0.5 h-4 w-4 flex-shrink-0 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span class="text-sm text-neutral-slate">{item}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+</div>

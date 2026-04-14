@@ -1,0 +1,137 @@
+---
+export interface Props {
+  type?: 'website' | 'organization' | 'service' | 'article' | 'person'
+  pageTitle?: string
+  pageDescription?: string
+  pagePath?: string
+}
+
+const {
+  type = 'website',
+  pageTitle,
+  pageDescription,
+  pagePath = '',
+} = Astro.props
+
+const baseUrl = 'https://klauserdesigns.ch'
+const fullUrl = `${baseUrl}${pagePath}`
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${baseUrl}/#organization`,
+  name: 'klauser designs & coaching',
+  alternateName: 'KDC',
+  url: baseUrl,
+  logo: `${baseUrl}/logo.png`,
+  description:
+    'Automatisierung, massgeschneiderte Tools und Datenlösungen für Schweizer Verbände und KMUs. Spezialisiert auf Prozessautomatisierung, individuelle Software-Entwicklung und Datenintegration.',
+  email: 'michael@klauserdesigns.ch',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'CH',
+    addressRegion: 'Zürich',
+  },
+  founder: {
+    '@type': 'Person',
+    name: 'Michael Klauser',
+    jobTitle: 'Systemtechnik-Ingenieur & Automatisierungs-Spezialist',
+    description:
+      'IT-Experte mit über 20 Jahren Erfahrung in Software-Entwicklung, Systemintegration und Prozessautomatisierung',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Switzerland',
+  },
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${baseUrl}/#website`,
+  url: baseUrl,
+  name: 'klauser designs & coaching',
+  description:
+    'Automatisierung, massgeschneiderte Tools und Datenlösungen für Schweizer Verbände und KMUs',
+  publisher: { '@id': `${baseUrl}/#organization` },
+  inLanguage: 'de-CH',
+}
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Automatisierung & Datenlösungen',
+  provider: { '@id': `${baseUrl}/#organization` },
+  areaServed: { '@type': 'Country', name: 'Switzerland' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Automatisierung, Tools & Datenlösungen',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Prozesse automatisieren',
+          description: 'Wiederkehrende Abläufe automatisieren und manuelle Arbeit reduzieren',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Massgeschneiderte Tools entwickeln',
+          description: 'Individuelle Software-Tools, die genau zu Ihren Anforderungen passen',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Daten nutzbar machen',
+          description: 'Datenintegration, Reporting und Data Warehouse für fundierte Entscheidungen',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Systeme wechseln, Daten mitnehmen',
+          description: 'Sichere Datenmigration und Systemwechsel ohne Datenverlust',
+        },
+      },
+    ],
+  },
+}
+
+const breadcrumbSchema =
+  pagePath && pagePath !== '/'
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
+          { '@type': 'ListItem', position: 2, name: pageTitle || 'Seite', item: fullUrl },
+        ],
+      }
+    : null
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': fullUrl,
+  url: fullUrl,
+  name: pageTitle || 'klauser designs & coaching',
+  description:
+    pageDescription ||
+    'Automatisierung, massgeschneiderte Tools und Datenlösungen für Schweizer Verbände und KMUs',
+  isPartOf: { '@id': `${baseUrl}/#website` },
+  about: { '@id': `${baseUrl}/#organization` },
+  inLanguage: 'de-CH',
+}
+
+const schemas: unknown[] = [organizationSchema, websiteSchema, webPageSchema]
+if (type === 'service') schemas.push(serviceSchema)
+if (breadcrumbSchema) schemas.push(breadcrumbSchema)
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemas)} />

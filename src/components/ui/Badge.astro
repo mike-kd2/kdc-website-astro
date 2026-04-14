@@ -1,0 +1,19 @@
+---
+export interface Props {
+  variant?: 'default' | 'primary' | 'accent' | 'outline'
+  class?: string
+}
+
+const { variant = 'default', class: className } = Astro.props
+
+const variants = {
+  default: 'bg-neutral-slate/10 text-neutral-slate border-neutral-slate/20',
+  primary: 'bg-primary/10 text-primary border-primary/20',
+  accent: 'bg-accent/10 text-accent-dark border-accent/20',
+  outline: 'bg-transparent text-neutral-charcoal border-neutral-slate',
+}
+---
+
+<div class={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-colors ${variants[variant]} ${className ?? ''}`}>
+  <slot />
+</div>

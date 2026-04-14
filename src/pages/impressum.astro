@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Container from '../components/layout/Container.astro'
+
+const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://klauserdesigns.ch'
+---
+
+<BaseLayout
+  title="klauser designs | Impressum"
+  description="Impressum und rechtliche Informationen von klauser designs &amp; coaching."
+  canonical={`${SITE_URL}/impressum`}
+  noindex={true}
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary to-primary-light text-white pt-24 pb-16">
+    <Container>
+      <div class="mx-auto max-w-3xl text-center">
+        <svg class="mx-auto mb-4 h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/>
+        </svg>
+        <h1 class="mb-4 text-4xl font-bold sm:text-5xl">Impressum</h1>
+        <p class="text-lg text-white/90">Rechtliche Informationen</p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="mx-auto max-w-4xl">
+        <div data-reveal class="space-y-8">
+          <!-- Angaben gemäss Art. 10 UWG -->
+          <div class="rounded-lg bg-white p-8 shadow-sm">
+            <h2 class="mb-4 flex items-center gap-2 text-2xl font-bold text-neutral-charcoal">
+              <svg class="h-6 w-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/>
+              </svg>
+              Angaben gemäss Art. 10 UWG
+            </h2>
+            <div class="space-y-3 text-neutral-slate">
+              <p>
+                <strong class="text-neutral-charcoal">Firma:</strong><br />
+                klauser designs &amp; coaching
+              </p>
+              <p>
+                <strong class="text-neutral-charcoal">Inhaber:</strong><br />
+                Michael Klauser
+              </p>
+              <p>
+                <strong class="text-neutral-charcoal">Adresse:</strong><br />
+                Notkerstrasse 14<br />
+                9000 St. Gallen<br />
+                Schweiz
+              </p>
+              <p>
+                <strong class="text-neutral-charcoal">UID:</strong><br />
+                CHE-351.216.842
+              </p>
+              <p>
+                <strong class="text-neutral-charcoal">MwSt-Nr:</strong><br />
+                CHE-351.216.842 MWST
+              </p>
+            </div>
+          </div>
+
+          <!-- Kontakt -->
+          <div class="rounded-lg bg-white p-8 shadow-sm">
+            <h2 class="mb-4 flex items-center gap-2 text-2xl font-bold text-neutral-charcoal">
+              <svg class="h-6 w-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              Kontakt
+            </h2>
+            <div class="space-y-2 text-neutral-slate">
+              <p>
+                <strong class="text-neutral-charcoal">E-Mail:</strong>{' '}
+                <a href="mailto:michael@klauserdesigns.ch" class="text-primary hover:text-primary-light hover:underline">
+                  michael@klauserdesigns.ch
+                </a>
+              </p>
+              <p>
+                <strong class="text-neutral-charcoal">Telefon:</strong>{' '}
+                <a href="tel:+41796915598" class="text-primary hover:text-primary-light hover:underline">
+                  +41 79 691 55 98
+                </a>
+              </p>
+              <p>
+                <strong class="text-neutral-charcoal">Website:</strong>{' '}
+                <a href="https://klauserdesigns.ch" class="text-primary hover:text-primary-light hover:underline">
+                  klauserdesigns.ch
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Haftungsausschluss -->
+          <div class="rounded-lg bg-white p-8 shadow-sm">
+            <h2 class="mb-4 text-2xl font-bold text-neutral-charcoal">
+              Haftungsausschluss
+            </h2>
+            <div class="space-y-4 text-neutral-slate">
+              <div>
+                <h3 class="mb-2 font-semibold text-neutral-charcoal">Haftung für Inhalte</h3>
+                <p>
+                  Die Inhalte unserer Seiten wurden mit grösster Sorgfalt
+                  erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität
+                  der Inhalte können wir jedoch keine Gewähr übernehmen.
+                </p>
+              </div>
+              <div>
+                <h3 class="mb-2 font-semibold text-neutral-charcoal">Haftung für Links</h3>
+                <p>
+                  Unser Angebot enthält Links zu externen Webseiten Dritter, auf
+                  deren Inhalte wir keinen Einfluss haben. Für die Inhalte der
+                  verlinkten Seiten ist stets der jeweilige Anbieter oder
+                  Betreiber der Seiten verantwortlich.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Urheberrecht -->
+          <div class="rounded-lg bg-white p-8 shadow-sm">
+            <h2 class="mb-4 text-2xl font-bold text-neutral-charcoal">
+              Urheberrecht
+            </h2>
+            <p class="text-neutral-slate">
+              Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
+              diesen Seiten unterliegen dem schweizerischen Urheberrecht. Die
+              Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+              Verwertung ausserhalb der Grenzen des Urheberrechtes bedürfen der
+              schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+            </p>
+          </div>
+
+          <!-- Bildnachweis -->
+          <div class="rounded-lg bg-white p-8 shadow-sm">
+            <h2 class="mb-4 text-2xl font-bold text-neutral-charcoal">
+              Bildnachweis
+            </h2>
+            <p class="text-neutral-slate">
+              Auf dieser Website verwendete Bilder und Grafiken sind
+              urheberrechtlich geschützt und stammen aus folgenden Quellen:
+            </p>
+            <ul class="mt-2 space-y-1 text-neutral-slate">
+              <li>• Icons: Lucide Icons (MIT Lizenz)</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mt-8 text-center text-sm text-neutral-slate">
+          <strong>Stand:</strong> Januar 2026
+        </p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

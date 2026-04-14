@@ -1,0 +1,92 @@
+# robots.txt für klauserdesigns.ch
+# Optimiert für traditionelle Suchmaschinen und LLM/AI-Crawler
+
+# ——— OPENAI (ChatGPT, SearchGPT) ———
+# SearchGPT: Indexiert Seiten für ChatGPT-Suchergebnisse und Zitate
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT User Agents: Lädt URLs wenn Benutzer nach spezifischen Seiten fragen
+User-agent: ChatGPT-User
+User-agent: ChatGPT-User/2.0
+Allow: /
+
+# GPTBot: Sammelt Daten für GPT-Modell-Training (optional blockieren)
+User-agent: GPTBot
+Allow: /
+
+# ——— ANTHROPIC (Claude) ———
+# ClaudeBot: Lädt URLs für Zitate und Echtzeit-Informationen
+User-agent: ClaudeBot
+User-agent: claude-web
+Allow: /
+
+# anthropic-ai: Sammelt Trainingsdaten für Claude-Modelle
+User-agent: anthropic-ai
+Allow: /
+
+# ——— PERPLEXITY ———
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# ——— GOOGLE (Gemini) ———
+# Google-Extended: Steuert Zugriff für Gemini AI Training
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# ——— MICROSOFT (Bing, Copilot) ———
+User-agent: Bingbot
+Allow: /
+
+# ——— ANDERE AI-ASSISTENTEN ———
+# Apple Intelligence
+User-agent: Applebot
+User-agent: Applebot-Extended
+Allow: /
+
+# Mistral AI
+User-agent: MistralAI-User
+Allow: /
+
+# DuckDuckGo AI
+User-agent: DuckAssistBot
+Allow: /
+
+# You.com AI
+User-agent: YouBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# ——— SOZIALE MEDIEN & PLATTFORMEN ———
+User-agent: FacebookBot
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# ——— AMAZON ———
+User-agent: Amazonbot
+Allow: /
+
+# ——— RESEARCH & OPEN DATA ———
+User-agent: AI2Bot
+User-agent: CCBot
+User-agent: Diffbot
+Allow: /
+
+# ——— ALLE ANDEREN CRAWLER ———
+User-agent: *
+Allow: /
+
+# ——— SITEMAP ———
+Sitemap: https://klauserdesigns.ch/sitemap.xml

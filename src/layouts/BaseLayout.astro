@@ -1,0 +1,123 @@
+---
+import '@fontsource/poppins/400.css'
+import '@fontsource/poppins/500.css'
+import '@fontsource/poppins/600.css'
+import '@fontsource/poppins/700.css'
+import '../styles/globals.css'
+import Header from '../components/layout/Header.astro'
+import Footer from '../components/layout/Footer.astro'
+import SkipLink from '../components/layout/SkipLink.astro'
+import FloatingCTA from '../components/islands/FloatingCTA'
+
+export interface Props {
+  title?: string
+  description?: string
+  canonical?: string
+  ogImage?: string
+  noindex?: boolean
+  type?: 'website' | 'organization' | 'service' | 'article' | 'person'
+  structuredData?: unknown
+}
+
+const {
+  title,
+  description = 'Ich automatisiere wiederkehrende Abläufe, baue massgeschneiderte Tools und bringe Struktur in Ihre Daten. Für Verbände und KMUs in der Schweiz. 20+ Jahre IT-Erfahrung.',
+  canonical,
+  ogImage,
+  noindex = false,
+} = Astro.props
+
+const DEFAULT_TITLE = 'Automatisierung & Datenlösungen für Verbände und KMUs | klauser designs&coaching'
+const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://klauserdesigns.ch'
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`
+
+const fullTitle = title ? `${title} | klauser designs&coaching` : DEFAULT_TITLE
+const canonicalUrl = canonical || SITE_URL
+const resolvedOgImage = ogImage || DEFAULT_OG_IMAGE
+---
+
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Basic Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Robots -->
+    {noindex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow, max-image-preview:large" />
+    }
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:site_name" content="klauser designs&coaching" />
+    <meta property="og:locale" content="de_CH" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedOgImage} />
+
+    <!-- Additional Meta Tags -->
+    <meta name="author" content="Michael Klauser" />
+    <meta name="language" content="German" />
+    <meta name="geo.region" content="CH" />
+    <meta name="geo.placename" content="Schweiz" />
+    <meta name="theme-color" content="#0A4D4E" />
+    <meta name="keywords" content="Automatisierung, Verbände, KMU, Datenlösungen, massgeschneiderte Tools, Prozessautomatisierung, Datenintegration, Reporting, Schweiz, Excel Automatisierung, Datenmigration" />
+    <meta name="abstract" content="Automatisierung, massgeschneiderte Tools und Datenlösungen für Verbände und KMUs in der Schweiz. 20+ Jahre IT-Erfahrung." />
+    <meta name="topic" content="Automatisierung, Datenlösungen, Prozessoptimierung, Tools für Verbände und KMUs" />
+    <meta name="classification" content="Business Services, Automation, Data Solutions" />
+
+    <!-- Plausible Analytics (production only) -->
+    {import.meta.env.PROD && (
+      <script defer data-domain="klauserdesigns.ch" src="https://plausible.io/js/script.js" />
+    )}
+  </head>
+  <body class="font-sans">
+    <SkipLink />
+    <div class="flex min-h-screen flex-col">
+      <Header />
+      <main id="main-content" class="flex-1" tabindex="-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <FloatingCTA client:load />
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed')
+              observer.unobserve(entry.target)
+            }
+          })
+        },
+        { threshold: 0.1, rootMargin: '-50px' }
+      )
+      document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el))
+    </script>
+  </body>
+</html>

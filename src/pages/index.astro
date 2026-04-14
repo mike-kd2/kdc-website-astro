@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import StructuredData from '../components/seo/StructuredData.astro'
+import Container from '../components/layout/Container.astro'
+---
+
+<BaseLayout
+  description="Automatisierung, massgeschneiderte Software und Datenstrukturen für Verbände und KMUs in der Schweiz."
+>
+  <StructuredData
+    type="website"
+    pageTitle="klauser designs"
+    pageDescription="Automatisierung, massgeschneiderte Software und Datenstrukturen für Verbände und KMUs in der Schweiz."
+    pagePath="/"
+  />
+
+  <!-- Hero -->
+  <section class="relative min-h-screen bg-primary overflow-hidden flex items-center">
+    <div
+      class="absolute inset-0 opacity-[0.06]"
+      style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 64px 64px;"
+    />
+    <div class="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-primary-light opacity-30 blur-3xl pointer-events-none" />
+    <div class="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-accent opacity-20 blur-2xl pointer-events-none" />
+
+    <Container size="lg">
+      <div class="relative py-24 md:py-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+            Automatisierung · Software · Daten
+          </p>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Ich baue die Tools,
+            <span class="text-accent">die Ihren Alltag</span>
+            erleichtern.
+          </h1>
+          <p class="text-lg text-white/75 max-w-lg mb-10 leading-relaxed">
+            Für Verbände und KMUs in der Schweiz. Kein Foliensatz.
+            Kein Konzeptpapier.
+            <span class="text-white/95 font-medium">Funktionierende Lösungen.</span>
+          </p>
+          <a href="/angebot#prozess-check" class="group inline-flex items-center justify-center rounded-md bg-accent text-neutral-charcoal font-medium text-lg px-6 py-3 min-h-[52px] transition-all shadow-sm hover:shadow-md hover:bg-accent-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+            Kostenlosen Prozess-Check anfragen
+            <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+
+        <div class="hidden lg:flex flex-col gap-4">
+          {[
+            { zahl: '10+', text: 'Jahre Partnerschaft mit Helion Energy' },
+            { zahl: 'Null', text: 'manueller Aufwand bei SBKH nach der Automatisierung' },
+            { zahl: '2013', text: 'selbstständig — Verbände und KMUs in der Deutschschweiz' },
+          ].map(({ zahl, text }) => (
+            <div class="rounded-lg bg-white/[0.07] border border-white/10 px-6 py-5 backdrop-blur-sm">
+              <p class="text-2xl font-bold text-accent mb-1">{zahl}</p>
+              <p class="text-white/70 text-sm leading-snug">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Kurzblock -->
+  <section class="bg-white py-20">
+    <Container size="sm">
+      <div class="border-l-4 border-accent pl-8">
+        <p class="text-xl sm:text-2xl text-neutral-charcoal leading-relaxed mb-5">
+          Sie haben Abläufe, die zu viel Zeit fressen: manuelle
+          Dateneingabe, Excel-Listen, die niemand mehr versteht, Systeme,
+          die nicht miteinander reden.
+        </p>
+        <p class="text-xl sm:text-2xl font-semibold text-primary leading-relaxed">
+          Ich baue die Lösung, die das ändert. Nicht irgendwann. In Wochen,
+          nicht Monaten.
+        </p>
+        <p class="mt-5 text-base text-neutral-slate">
+          Ob das ein klassischer Workflow ist, ein massgeschneidertes Tool
+          oder KI an den richtigen Stellen: Wir entscheiden nach dem, was
+          für Ihr Problem wirklich Sinn ergibt.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Zielgruppen-Karten -->
+  <section class="bg-neutral-off-white py-20">
+    <Container size="md">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a
+          href="/verbaende"
+          class="group block rounded-lg bg-white shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border-t-4 border-primary p-8"
+        >
+          <h2 class="text-xl font-bold text-neutral-charcoal mb-3">Für Verbände</h2>
+          <p class="text-neutral-slate leading-relaxed mb-6">
+            Prüfungsprozesse, Mitgliederdaten, Zertifizierungen. Ich
+            automatisiere, was Ihre Geschäftsstelle heute von Hand macht.
+          </p>
+          <span class="text-primary font-semibold inline-flex items-center gap-1">
+            Mehr erfahren
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </span>
+        </a>
+
+        <a
+          href="/kmu"
+          class="group block rounded-lg bg-white shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border-t-4 border-accent p-8"
+        >
+          <h2 class="text-xl font-bold text-neutral-charcoal mb-3">Für KMUs</h2>
+          <p class="text-neutral-slate leading-relaxed mb-6">
+            Datenflüsse, Reporting, Systemwechsel. Ich baue die Brücken
+            zwischen Ihren Systemen.
+          </p>
+          <span class="text-primary font-semibold inline-flex items-center gap-1">
+            Mehr erfahren
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </span>
+        </a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Referenz-Teaser -->
+  <section class="bg-neutral-off-white py-20 border-t border-neutral-light-gray">
+    <Container size="md">
+      <p class="text-primary font-semibold text-sm uppercase tracking-widest mb-3">
+        Ausgewählte Projekte
+      </p>
+      <h2 class="text-2xl font-bold text-neutral-charcoal mb-10">
+        Was ich bereits gebaut habe.
+      </h2>
+      <div class="flex flex-col gap-3">
+        {[
+          {
+            firma: 'OdA ARTECURA',
+            ergebnis: 'Prüfungsprozess von manueller Excel-Arbeit auf eigenständig durchführbare Automatisierung umgestellt.',
+            href: '/referenzen#oda-artecura',
+          },
+          {
+            firma: 'Helion Energy AG',
+            ergebnis: '10 Jahre Partnerschaft: Data Warehouse, Dashboards, Middleware, Datenmigration.',
+            href: '/referenzen#helion-energy',
+          },
+          {
+            firma: 'SBKH GmbH',
+            ergebnis: 'Tägliche Datenaktualisierung vollständig automatisiert. Null manueller Aufwand.',
+            href: '/referenzen#sbkh',
+          },
+        ].map(({ firma, ergebnis, href }) => (
+          <a
+            href={href}
+            class="group flex items-center gap-4 rounded-lg bg-white border border-neutral-light-gray hover:border-primary/30 hover:shadow-card transition-all px-6 py-5"
+          >
+            <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-accent" />
+            <div class="min-w-0 flex-1">
+              <p class="font-bold text-neutral-charcoal text-base leading-tight mb-0.5">{firma}</p>
+              <p class="text-neutral-slate text-sm leading-relaxed">{ergebnis}</p>
+            </div>
+            <span class="flex-shrink-0 text-primary/40 group-hover:text-primary transition-colors text-base self-center">→</span>
+          </a>
+        ))}
+      </div>
+      <div class="mt-8">
+        <a href="/referenzen" class="text-primary hover:text-accent font-semibold transition-colors text-sm uppercase tracking-wide">
+          Alle Referenzen →
+        </a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Abschluss-CTA -->
+  <section class="bg-primary py-20">
+    <Container size="sm">
+      <div class="text-center">
+        <p class="text-xl sm:text-2xl text-white mb-3 leading-relaxed">
+          Sie haben einen Ablauf, der besser laufen sollte?
+        </p>
+        <p class="text-lg text-white/70 mb-10">
+          Lassen Sie uns in 45 Minuten herausfinden, ob Automatisierung sich lohnt.
+        </p>
+        <a href="/angebot#prozess-check" class="group inline-flex items-center justify-center rounded-md bg-accent text-neutral-charcoal font-medium text-lg px-6 py-3 min-h-[52px] transition-all shadow-sm hover:shadow-md hover:bg-accent-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          Prozess-Check anfragen
+          <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

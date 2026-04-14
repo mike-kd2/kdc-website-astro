@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Container from '../components/layout/Container.astro'
+import ContactForm from '../components/islands/ContactForm'
+import TidyCalEmbed from '../components/islands/TidyCalEmbed'
+import { TIDYCAL_URL } from '../lib/constants'
+
+const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://klauserdesigns.ch'
+const PROZESS_CHECK_URL = TIDYCAL_URL
+---
+
+<BaseLayout
+  title="klauser designs | Kontakt"
+  description="Schreiben Sie Michael Klauser oder buchen Sie direkt einen kostenlosen Prozess-Check."
+  canonical={`${SITE_URL}/kontakt`}
+>
+  <!-- Hero Section -->
+  <section class="bg-primary text-white py-16 md:py-20">
+    <Container>
+      <div data-reveal class="max-w-2xl">
+        <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+          Kontakt
+        </p>
+        <h1 class="mb-4 text-4xl font-bold sm:text-5xl">Lassen Sie uns reden.</h1>
+        <p class="text-lg text-white/75">
+          Schreiben Sie mir, rufen Sie an oder buchen Sie direkt einen
+          kostenlosen Prozess-Check.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Contact Info + TidyCal Section -->
+  <section class="bg-white py-16">
+    <Container>
+      <div data-reveal class="mx-auto max-w-5xl grid grid-cols-1 gap-12 md:grid-cols-2 md:items-start">
+        <!-- Left: Contact details -->
+        <div>
+          <h2 class="mb-6 text-2xl font-bold text-neutral-charcoal">Kontaktdaten</h2>
+          <ul class="space-y-4 text-neutral-slate">
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              <span>
+                <a href="mailto:michael@klauserdesigns.ch" class="text-primary hover:text-primary-light hover:underline">
+                  michael@klauserdesigns.ch
+                </a>
+              </span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>
+                <a href="tel:+41796915598" class="text-primary hover:text-primary-light hover:underline">
+                  +41 79 691 55 98
+                </a>
+              </span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Notkerstrasse 14, 9000 St. Gallen</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: TidyCal embed -->
+        <div>
+          <h2 class="mb-6 text-2xl font-bold text-neutral-charcoal">Direkt buchen</h2>
+          <TidyCalEmbed url={PROZESS_CHECK_URL} height={700} client:visible />
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="bg-neutral-50 py-16">
+    <Container size="md">
+      <div data-reveal class="mx-auto max-w-2xl">
+        <h2 class="mb-2 text-2xl font-bold text-neutral-charcoal">Oder schreiben Sie mir</h2>
+        <p class="mb-8 text-neutral-slate">
+          Ich melde mich innerhalb von 24 Stunden bei Ihnen.
+        </p>
+        <ContactForm client:load />
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

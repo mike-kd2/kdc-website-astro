@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Container from '../components/layout/Container.astro'
+import ReferenzCard from '../components/ui/ReferenzCard.astro'
+
+const stats = [
+  { wert: '20+', label: 'Jahre Projekterfahrung' },
+  { wert: '10 J.', label: 'längste Kundenbeziehung' },
+  { wert: '13 J.', label: 'Selbstständig' },
+  { wert: '6+', label: 'Branchen' },
+]
+
+const projekte = [
+  {
+    id: 'oda-artecura',
+    startJahr: '2026',
+    firma: 'OdA ARTECURA',
+    branche: 'Berufsverband Kunsttherapie',
+    zeitraum: '2026',
+    problem: 'Das gesamte Qualifikationsverfahren lief manuell in Excel — über 9 Worksheets, händische Formeln, fehleranfällig und zeitintensiv für die Geschäftsstelle.',
+    loesung: 'C#-Service ersetzt Legacy-VBA: automatische Generierung individueller .xlsm-Bewertungsformulare mit Datenimport aus Prüfungsplänen und automatischer Notenberechnung.',
+    ergebnis: 'Die Geschäftsstelle führt das Verfahren eigenständig durch — mit einem Bruchteil des bisherigen Aufwands.',
+  },
+  {
+    id: 'haustechnik-d365',
+    startJahr: '2025',
+    firma: 'CH Haustechnik-Unternehmen',
+    branche: 'KMU / Technische Gebäudeausrüstung',
+    zeitraum: '2025',
+    problem: 'ERP-Einführung mit Microsoft Dynamics 365 CRM, SAP-Anbindung und CPQ-Lösung — ohne strukturierten Cut-Over-Plan. Go-Live-Risiko war unkontrolliert, Abhängigkeiten unklar.',
+    loesung: 'Als externer Migration Manager: Cut-Over-Plan strukturiert, Migrationsschritte definiert, Rollback-Szenarien erarbeitet, Koordination mit Fachbereichen und Softwareanbieter.',
+    ergebnis: 'Strukturierter Go-Live-Prozess mit klaren Verantwortlichkeiten und definierten Rollback-Szenarien.',
+  },
+  {
+    id: 'helion-migration',
+    startJahr: '2024',
+    firma: 'Helion Energy AG',
+    branche: 'Energieunternehmen',
+    zeitraum: '2024 – 2025',
+    problem: 'Ablösung des Legacy-Systems ES2000 durch Microsoft Dynamics 365 CRM und BC. Bisherige Migrationsstrategie basierte auf Stichproben — zu riskant für eine vollständige Datenmigration.',
+    loesung: 'End-to-End Datenmigration mit Python und SQL. Automatisierte 100%-Validierung aller migrierten Datensätze. Tägliche Validierungszyklen zur frühzeitigen Erkennung von Inkonsistenzen.',
+    ergebnis: '100% der migrierten Datensätze validiert — statt Stichproben. Keine Post-Migration-Korrekturen.',
+  },
+  {
+    id: 'sbkh',
+    startJahr: '2019',
+    firma: 'SBKH GmbH',
+    branche: 'E-Commerce / Preisvergleich',
+    zeitraum: '2019 – 2020',
+    problem: 'Täglich neue Produktdaten aus mehreren externen Quellen — Abholung, Transformation und Einspielung liefen komplett manuell. Wachstum war dadurch personalabhängig.',
+    loesung: 'Vollautomatisierte Pipeline: Abholung aus mehreren Quellen, Transformation, Qualitätsprüfung, Bereitstellung. Täglicher Lauf ohne manuelle Eingriffe.',
+    ergebnis: 'Null manueller Aufwand. Sortiment wächst ohne zusätzliches Personal.',
+  },
+  {
+    id: 'helion-middleware',
+    startJahr: '2018',
+    firma: 'Helion Energy AG',
+    branche: 'Energieunternehmen',
+    zeitraum: '2018 – 2025',
+    problem: 'Eigenentwickelte Vertriebs- und Projektmanagementsoftware, on-premise ERP und konzernweites SAP liefen aneinander vorbei. Daten wurden manuell zwischen Systemen übertragen.',
+    loesung: 'Azure-Middleware für vollautomatischen Import und Sync von Adress-, Projekt-, Offert- und Rechnungsdaten. Anbindung externer Logistikpartner. Modular gebaut für geplante ERP-Migration.',
+    ergebnis: 'Kein manuelles Übertragen mehr. Vollautomatische Datenflüsse zwischen allen Systemen.',
+  },
+  {
+    id: 'helion-dw',
+    startJahr: '2013',
+    firma: 'Helion Energy AG',
+    branche: 'Energieunternehmen',
+    zeitraum: '2013 – 2023',
+    problem: 'Kein zentrales Daten-Fundament. Berichte wurden manuell zusammengestellt — pro Report mehrere Tage Aufwand. Kein einheitliches Bild über Projekte und Geschäftszahlen.',
+    loesung: 'Aufbau und 10-jähriger Betrieb des firmenweiten Data Warehouse. KPI-Dashboards in Power BI. Automatische Aktualisierung, strukturierte Datenhaltung als Single Point of Truth.',
+    ergebnis: 'Reportingzeit von Tagen auf Minuten reduziert. Alle Geschäftsbereiche auf demselben Datenstand.',
+  },
+  {
+    id: 'imt-ag',
+    startJahr: '2002',
+    firma: 'IMT AG',
+    branche: 'Medizintechnik (FDA/CE-reguliert)',
+    zeitraum: '2002 – 2013',
+    problem: 'Wachsendes Medtech-Unternehmen ohne professionelle IT-Struktur — in einem regulierten Umfeld (FDA, CE, CSA), das höchste Anforderungen an Prozesse und Dokumentation stellt.',
+    loesung: 'Als CIO und Mitglied der Geschäftsleitung: Aufbau und Leitung der gesamten IT und des Entwicklungsteams. Software für Beatmungs- und Anästhesiegeräte. Compliance-konforme Infrastruktur.',
+    ergebnis: 'Stabile IT-Struktur und Entwicklungsteam in einem regulierten Umfeld — über 7 Jahre aufgebaut und geführt.',
+  },
+]
+---
+
+<BaseLayout
+  title="klauser designs | Referenzen"
+  description="20+ Jahre Projekterfahrung: Data Warehouse, Systemmigrationen, Automatisierungen und Middleware — für Energieunternehmen, Verbände und KMUs."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-primary overflow-hidden py-16 text-white md:py-24">
+    <div
+      class="absolute inset-0 opacity-[0.06]"
+      style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 64px 64px;"
+    />
+    <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-primary-light opacity-40 blur-3xl pointer-events-none" />
+    <div class="absolute -bottom-16 left-1/3 w-48 h-48 rounded-full bg-accent opacity-15 blur-2xl pointer-events-none" />
+
+    <Container size="md">
+      <div class="relative">
+        <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+          Referenzen
+        </p>
+        <h1 class="text-4xl font-bold sm:text-5xl lg:text-6xl max-w-3xl mb-6">
+          Manche Kunden kommen einmal.<br />Manche bleiben ein Jahrzehnt.
+        </h1>
+        <p class="text-lg text-white/70 max-w-xl">
+          Ich arbeite nicht mit möglichst vielen Kunden — sondern möglichst
+          tief mit den richtigen. Was dabei entsteht, sehen Sie hier.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="bg-neutral-charcoal py-8">
+    <Container size="md">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 sm:divide-x sm:divide-white/10">
+        {stats.map(({ wert, label }) => (
+          <div class="text-center sm:px-6">
+            <p class="text-3xl font-bold text-accent tabular-nums">{wert}</p>
+            <p class="text-white/50 text-xs mt-1">{label}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="bg-neutral-off-white py-16">
+    <Container size="md">
+      <div class="relative">
+        <!-- Vertical connecting line (desktop only) -->
+        <div
+          class="hidden md:block absolute w-px bg-neutral-light-gray"
+          style="left: 4.5rem; top: 2rem; bottom: 2rem;"
+        />
+
+        <div class="flex flex-col gap-10">
+          {projekte.map((projekt, i) => (
+            <div class="flex items-start">
+              <!-- Year label + dot (desktop) -->
+              <div class="hidden md:block w-[4.5rem] flex-shrink-0 relative pt-7 text-right pr-5">
+                <span class="text-xs font-bold text-neutral-slate tabular-nums leading-none">
+                  {projekt.startJahr}
+                </span>
+                <span class="absolute right-[-5px] top-7 mt-0.5 w-2.5 h-2.5 rounded-full bg-accent ring-2 ring-neutral-off-white block" />
+              </div>
+
+              <!-- Card -->
+              <div class="flex-1 md:pl-8">
+                <ReferenzCard
+                  id={projekt.id}
+                  nummer={i + 1}
+                  firma={projekt.firma}
+                  branche={projekt.branche}
+                  zeitraum={projekt.zeitraum}
+                  problem={projekt.problem}
+                  loesung={projekt.loesung}
+                  ergebnis={projekt.ergebnis}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-primary py-16 text-white">
+    <Container size="md">
+      <p class="mb-2 text-2xl font-semibold sm:text-3xl">
+        Kommt Ihnen etwas davon bekannt vor?
+      </p>
+      <p class="text-white/60 mb-8 max-w-md">
+        In 30 Minuten sehen wir gemeinsam, ob meine Erfahrung zu Ihrem Problem passt.
+      </p>
+      <a
+        href="/angebot#prozess-check"
+        class="inline-flex items-center rounded-md bg-white px-6 py-3 text-lg font-medium text-primary transition-colors hover:bg-white/90"
+      >
+        Prozess-Check anfragen
+      </a>
+    </Container>
+  </section>
+</BaseLayout>

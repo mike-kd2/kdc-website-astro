@@ -1,0 +1,106 @@
+---
+import { Icon } from 'astro-icon/components'
+import { NAVIGATION_ITEMS } from '../../lib/constants'
+---
+
+<header
+  class="sticky top-0 z-50 w-full border-b border-transparent bg-white transition-all duration-200"
+  role="banner"
+  aria-label="Kopfzeile"
+>
+  <div class="container mx-auto px-4">
+    <div class="flex h-16 items-center justify-between md:h-20">
+      <!-- Logo -->
+      <a
+        href="/"
+        class="flex items-center space-x-2 text-lg font-bold text-primary hover:text-primary-light transition-colors md:text-xl rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+      >
+        <span>klauser designs</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex md:items-center md:space-x-8" aria-label="Hauptnavigation">
+        {NAVIGATION_ITEMS.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-medium text-neutral-charcoal hover:text-primary transition-colors rounded-md px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:block">
+        <a
+          href="/angebot#prozess-check"
+          class="inline-flex items-center justify-center rounded-md bg-primary text-white font-medium px-4 py-2 text-sm hover:bg-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          Prozess-Check
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-neutral-charcoal hover:bg-neutral-light-gray/50 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-label="Toggle menu"
+      >
+        <Icon name="lucide:menu" class="h-6 w-6" id="icon-menu" />
+        <Icon name="lucide:x" class="h-6 w-6 hidden" id="icon-close" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden border-t bg-white" data-mobile-menu hidden>
+    <nav class="container mx-auto px-4 py-4 space-y-1" aria-label="Mobile Navigation">
+      {NAVIGATION_ITEMS.map((item) => (
+        <a
+          href={item.href}
+          class="block rounded-md px-3 py-2 text-base font-medium text-neutral-charcoal hover:bg-neutral-light-gray/50 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="/angebot#prozess-check"
+        class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+      >
+        Prozess-Check
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector('header')
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('is-scrolled', window.scrollY > 20)
+  }, { passive: true })
+
+  const btn = document.querySelector('[data-menu-toggle]')
+  const menu = document.querySelector('[data-mobile-menu]') as HTMLElement | null
+  const iconMenu = document.getElementById('icon-menu')
+  const iconClose = document.getElementById('icon-close')
+
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true'
+    btn.setAttribute('aria-expanded', String(!open))
+    if (menu) menu.hidden = open
+    document.body.style.overflow = open ? '' : 'hidden'
+    if (iconMenu) iconMenu.classList.toggle('hidden', !open)
+    if (iconClose) iconClose.classList.toggle('hidden', open)
+  })
+
+  // Close menu when nav link is clicked
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    btn?.setAttribute('aria-expanded', 'false')
+    if (menu) menu.hidden = true
+    document.body.style.overflow = ''
+    if (iconMenu) iconMenu.classList.remove('hidden')
+    if (iconClose) iconClose.classList.add('hidden')
+  }))
+</script>

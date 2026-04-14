@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Container from '../components/layout/Container.astro'
+---
+
+<BaseLayout
+  title="Seite nicht gefunden"
+  description="Die gesuchte Seite wurde nicht gefunden."
+  noindex={true}
+>
+  <section class="min-h-[60vh] flex items-center py-16 md:py-24">
+    <Container>
+      <div class="mx-auto max-w-2xl text-center">
+        <!-- 404 Number -->
+        <div class="mb-8">
+          <h1 class="text-9xl font-bold text-primary/20">404</h1>
+        </div>
+
+        <!-- Message -->
+        <h2 class="mb-4 text-3xl font-bold text-neutral-charcoal sm:text-4xl">
+          Seite nicht gefunden
+        </h2>
+        <p class="mb-8 text-lg text-neutral-slate">
+          Die Seite, die Sie suchen, existiert leider nicht. Möglicherweise wurde
+          sie verschoben oder der Link ist veraltet.
+        </p>
+
+        <!-- Actions -->
+        <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center rounded-md bg-primary text-white font-medium text-lg px-6 py-3 min-h-[52px] transition-all shadow-sm hover:shadow-md hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            <svg class="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            Zur Startseite
+          </a>
+          <a
+            href="/kontakt"
+            class="inline-flex items-center justify-center rounded-md border-2 border-primary text-primary font-medium text-lg px-6 py-3 min-h-[52px] transition-all shadow-sm hover:shadow-md hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            <svg class="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+            </svg>
+            Kontakt aufnehmen
+          </a>
+        </div>
+
+        <!-- Helpful Links -->
+        <div class="mt-12 rounded-lg bg-neutral-off-white p-6">
+          <h3 class="mb-4 font-semibold text-neutral-charcoal">
+            Vielleicht suchen Sie nach:
+          </h3>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/angebot" class="text-primary hover:text-primary-light hover:underline">Angebot</a>
+            <span class="text-neutral-slate">•</span>
+            <a href="/ueber-mich" class="text-primary hover:text-primary-light hover:underline">Über mich</a>
+            <span class="text-neutral-slate">•</span>
+            <a href="/referenzen" class="text-primary hover:text-primary-light hover:underline">Referenzen</a>
+            <span class="text-neutral-slate">•</span>
+            <a href="/kontakt" class="text-primary hover:text-primary-light hover:underline">Kontakt</a>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

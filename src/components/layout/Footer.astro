@@ -1,0 +1,115 @@
+---
+import { NAVIGATION_ITEMS, CONTACT_EMAIL, CONTACT_PHONE } from '../../lib/constants'
+
+const currentYear = new Date().getFullYear()
+---
+
+<footer class="bg-neutral-charcoal text-neutral-off-white" role="contentinfo" aria-label="Fusszeile">
+  <div class="container mx-auto px-4 py-12 md:py-16">
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand & Description -->
+      <div class="lg:col-span-2">
+        <a
+          href="/"
+          class="inline-block text-xl font-bold text-white hover:text-accent transition-colors mb-4 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-charcoal"
+        >
+          klauser designs
+        </a>
+        <p class="text-neutral-light-gray max-w-md mb-6">
+          Automatisierung, massgeschneiderte Tools und Datenlösungen für Verbände und KMUs in der Schweiz.
+        </p>
+        <a href="/angebot#prozess-check">
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-md bg-accent text-neutral-charcoal font-medium px-4 py-2 text-base hover:bg-accent-dark transition-all shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            Prozess-Check anfragen
+          </button>
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+          Navigation
+        </h3>
+        <ul class="space-y-3">
+          {NAVIGATION_ITEMS.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-neutral-light-gray hover:text-white transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-charcoal"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="/kontakt"
+              class="text-neutral-light-gray hover:text-white transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-charcoal"
+            >
+              Kontakt
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+          Kontakt
+        </h3>
+        <ul class="space-y-3">
+          <li>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              class="text-neutral-light-gray hover:text-white transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-charcoal"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}
+              class="text-neutral-light-gray hover:text-white transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-charcoal"
+            >
+              {CONTACT_PHONE}
+            </a>
+          </li>
+          <li>
+            <a
+              href="/kontakt"
+              class="text-neutral-light-gray hover:text-white transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-charcoal"
+            >
+              Kontaktformular
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-12 pt-8 border-t border-neutral-slate/30">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <p class="text-sm text-neutral-light-gray">
+          &copy; {currentYear} klauser designs & coaching. Alle Rechte vorbehalten.
+        </p>
+        <div class="flex flex-wrap gap-6 text-sm">
+          <a
+            href="/impressum"
+            class="text-neutral-light-gray hover:text-white transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-charcoal"
+          >
+            Impressum
+          </a>
+          <a
+            href="/datenschutz"
+            class="text-neutral-light-gray hover:text-white transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-charcoal"
+          >
+            Datenschutz
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
