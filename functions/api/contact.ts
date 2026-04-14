@@ -141,7 +141,7 @@ async function sendEmail(data: ContactFormData, env: Env): Promise<void> {
   }
 }
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+export const onRequestPost = async ({ request, env }: { request: Request; env: Env }): Promise<Response> => {
   const json = () => (body: unknown, status: number) =>
     new Response(JSON.stringify(body), {
       status,
