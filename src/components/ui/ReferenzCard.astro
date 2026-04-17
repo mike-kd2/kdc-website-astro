@@ -7,10 +7,11 @@ export interface Props {
   zeitraum?: string
   problem: string
   loesung: string
+  loesungLabel?: string
   ergebnis: string
 }
 
-const { id, nummer, firma, branche, zeitraum, problem, loesung, ergebnis } = Astro.props
+const { id, nummer, firma, branche, zeitraum, problem, loesung, loesungLabel = 'Was ich gebaut habe', ergebnis } = Astro.props
 ---
 
 <div
@@ -53,7 +54,7 @@ const { id, nummer, firma, branche, zeitraum, problem, loesung, ergebnis } = Ast
     </div>
     <div class="px-8 py-5">
       <p class="text-xs font-bold uppercase tracking-widest text-neutral-slate mb-2">
-        Was ich gebaut habe
+        {loesungLabel}
       </p>
       <p class="text-neutral-slate text-sm leading-relaxed">{loesung}</p>
     </div>
