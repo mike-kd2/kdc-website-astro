@@ -9,9 +9,11 @@ export interface Props {
   loesung: string
   loesungLabel?: string
   ergebnis: string
+  ctaHref?: string
+  ctaLabel?: string
 }
 
-const { id, nummer, firma, branche, zeitraum, problem, loesung, loesungLabel = 'Was ich gebaut habe', ergebnis } = Astro.props
+const { id, nummer, firma, branche, zeitraum, problem, loesung, loesungLabel = 'Was ich gebaut habe', ergebnis, ctaHref, ctaLabel } = Astro.props
 ---
 
 <div
@@ -57,6 +59,17 @@ const { id, nummer, firma, branche, zeitraum, problem, loesung, loesungLabel = '
         {loesungLabel}
       </p>
       <p class="text-neutral-slate text-sm leading-relaxed">{loesung}</p>
+      {ctaHref && (
+        <a
+          href={ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-primary hover:text-accent transition-colors"
+        >
+          {ctaLabel || 'Mehr erfahren'}
+          <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      )}
     </div>
   </div>
 </div>
