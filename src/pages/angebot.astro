@@ -3,12 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import Container from '../components/layout/Container.astro'
 import PaketCard from '../components/ui/PaketCard.astro'
 import TidyCalEmbed from '../components/islands/TidyCalEmbed'
-import { TIDYCAL_URL } from '../lib/constants'
+import { TIDYCAL_URL, NDSG_CHECK_URL } from '../lib/constants'
 ---
 
 <BaseLayout
-  title="Prozess-Check anfragen — Automatisierung & Datenlösungen"
-  description="Drei klare Schritte: Prozess-Check (kostenlos), Erster Prototyp, Laufende Betreuung. Kein Kleingedrucktes."
+  title="Prozess-Check anfragen — Automatisierung, Datenlösungen & Datenschutz"
+  description="Drei klare Schritte: Prozess-Check (kostenlos), Erster Prototyp, Laufende Betreuung. Plus: kostenloser nDSG-Schnell-Check. Kein Kleingedrucktes."
 >
   <!-- Hero Section -->
   <section class="relative bg-primary overflow-hidden py-16 text-white md:py-24">
@@ -97,6 +97,56 @@ import { TIDYCAL_URL } from '../lib/constants'
           ctaText="Betreuung anfragen"
           ctaHref="#termin"
         />
+      </div>
+    </Container>
+  </section>
+
+  <!-- nDSG-Check Section -->
+  <section class="bg-white py-16 border-t border-neutral-light-gray">
+    <Container size="md">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+            Datenschutz
+          </p>
+          <h2 class="text-2xl font-bold text-neutral-charcoal mb-4 sm:text-3xl">
+            Oder starten Sie hier: nDSG-Schnell-Check.
+          </h2>
+          <p class="text-neutral-slate leading-relaxed mb-6">
+            In 5 Minuten wissen Sie, wo Ihr Unternehmen beim Schweizer
+            Datenschutzgesetz steht. Der Schnell-Check analysiert Ihre Website,
+            prüft Ihre Angaben und zeigt konkret, was fehlt.
+          </p>
+          <p class="text-neutral-slate leading-relaxed mb-8">
+            Die meisten IT-Berater machen Automatisierung oder Datenschutz.
+            Ich mache beides. Wer Daten automatisiert, muss auch wissen,
+            welche Regeln dafür gelten.
+          </p>
+          <a
+            href={NDSG_CHECK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center justify-center rounded-md bg-accent text-neutral-charcoal font-medium text-lg px-6 py-3 min-h-[52px] transition-all shadow-sm hover:shadow-md hover:bg-accent-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            Kostenlos prüfen auf ndsg-check.ch
+            <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+        <div class="flex flex-col gap-3">
+          {[
+            { label: 'Schnell-Check', beschreibung: 'Kostenlose Website-Analyse + Fragebogen', preis: 'Gratis' },
+            { label: 'Detailbericht', beschreibung: 'Alle Befunde mit Handlungsempfehlungen', preis: 'CHF 49' },
+            { label: 'Komplett-Paket', beschreibung: 'DSE, VVZ, AVV-Vorlagen und persönliche Beratung', preis: 'CHF 490' },
+          ].map(({ label, beschreibung, preis }) => (
+            <div class="flex items-center gap-4 rounded-lg bg-neutral-off-white border border-neutral-light-gray px-6 py-4">
+              <div class="flex-1 min-w-0">
+                <p class="font-bold text-neutral-charcoal text-base">{label}</p>
+                <p class="text-neutral-slate text-sm">{beschreibung}</p>
+              </div>
+              <span class="flex-shrink-0 text-accent font-bold text-sm">{preis}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </Container>
   </section>

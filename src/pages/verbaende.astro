@@ -7,13 +7,13 @@ import LeistungsBlock from '../components/ui/LeistungsBlock.astro'
 ---
 
 <BaseLayout
-  title="Automatisierung für Schweizer Verbände & Geschäftsstellen"
-  description="Automatisierung von Prüfungsprozessen, Mitgliederdaten und Reporting für Schweizer Verbände."
+  title="Automatisierung & Datenschutz für Schweizer Verbände & Geschäftsstellen"
+  description="Automatisierung von Prüfungsprozessen, Mitgliederdaten, Reporting und nDSG-Compliance für Schweizer Verbände."
 >
   <StructuredData
     type="service"
-    pageTitle="Automatisierung für Schweizer Verbände & Geschäftsstellen"
-    pageDescription="Automatisierung von Prüfungsprozessen, Mitgliederdaten und Reporting für Schweizer Verbände."
+    pageTitle="Automatisierung & Datenschutz für Schweizer Verbände & Geschäftsstellen"
+    pageDescription="Automatisierung von Prüfungsprozessen, Mitgliederdaten, Reporting und nDSG-Compliance für Schweizer Verbände."
     pagePath="/verbaende"
   />
 
@@ -50,6 +50,7 @@ import LeistungsBlock from '../components/ui/LeistungsBlock.astro'
             'Excel-Datei wird manuell befüllt',
             'Ergebnisse werden händisch übertragen',
             'Dokumente werden einzeln erstellt',
+            'Datenschutz bei Mitgliederdaten ist ungeklärt',
           ].map((item) => (
             <div class="flex items-center gap-3 rounded-md bg-white/[0.06] border border-white/10 px-4 py-3">
               <span class="w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" />
@@ -94,6 +95,11 @@ import LeistungsBlock from '../components/ui/LeistungsBlock.astro'
           nummer={4}
           titel="Datenmigration bei Systemwechsel"
           text="Datenqualität sichern und verbessern: validiert, nicht bloss kopiert."
+        />
+        <LeistungsBlock
+          nummer={5}
+          titel="Datenschutz für Verbandsdaten"
+          text="Mitgliederdaten, Prüfungsresultate, Zertifizierungen: alles personenbezogene Daten unter dem nDSG. Ich prüfe, wo Sie stehen, und bringe Ihre Verarbeitung auf den aktuellen Stand."
         />
       </div>
     </Container>

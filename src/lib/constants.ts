@@ -1,6 +1,6 @@
 // Site Metadata
 export const SITE_NAME = 'klauser designs'
-export const SITE_DESCRIPTION = 'Automatisierung, massgeschneiderte Tools und Datenlösungen für Verbände und KMUs in der Schweiz'
+export const SITE_DESCRIPTION = 'Automatisierung, Datenlösungen und Datenschutz-Compliance für Verbände und KMUs in der Schweiz'
 export const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://klauserdesigns.ch'
 
 // Contact Information
@@ -10,6 +10,7 @@ export const CONTACT_NAME = 'Michael Klauser'
 
 // External URLs
 export const TIDYCAL_URL = import.meta.env.PUBLIC_TIDYCAL_URL || 'https://tidycal.com/klauserdesigns/termin-vereinbaren'
+export const NDSG_CHECK_URL = 'https://ndsg-check.ch'
 
 // Analytics
 export const PLAUSIBLE_DOMAIN = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN || 'klauserdesigns.ch'
@@ -60,6 +61,12 @@ export const SERVICES = [
     title: 'Systeme wechseln, Daten mitnehmen',
     description: 'Sie wechseln Ihr ERP, Ihre Mitgliederverwaltung oder ein anderes System? Ich sorge dafür, dass Ihre Daten sauber, vollständig und validiert im neuen System ankommen.',
     icon: 'RefreshCw',
+  },
+  {
+    id: 'datenschutz',
+    title: 'Datenschutz umsetzen',
+    description: 'Wer Daten automatisiert, muss auch wissen, welche Regeln dafür gelten. Ich prüfe Ihre nDSG-Compliance, identifiziere Lücken und liefere die Dokumente und Massnahmen, die Sie brauchen.',
+    icon: 'Shield',
   },
 ]
 

@@ -7,7 +7,7 @@ import portrait from '../assets/images/portrait_Michael_Klauser_square.jpg'
 
 const technologien = [
   { gruppe: 'Daten & Datenbanken', items: ['SQL Server & T-SQL (10+ Jahre)', 'SSIS, ETL-Pipelines', 'Data Warehouse Architektur', 'Azure SQL'] },
-  { gruppe: 'Entwicklung', items: ['C#, .NET Framework / Core', 'Python (Pandas, Automatisierung)', 'VBA, ClosedXML', 'REST APIs, OData, JSON', 'KI-Tools (Claude Code, Copilot)'] },
+  { gruppe: 'Entwicklung', items: ['C#, .NET Framework / Core', 'Python (Pandas, Automatisierung)', 'VBA, ClosedXML', 'REST APIs, OData, JSON', 'KI-Tools (Claude Code, Copilot)', 'nDSG-Check (eigenes Compliance-Tool)'] },
   { gruppe: 'Reporting & Integration', items: ['Power BI, DAX', 'Microsoft Dynamics 365', 'SAP-Anbindungen', 'Excel (komplex, VBA)'] },
 ]
 
@@ -53,7 +53,7 @@ const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://klauserdesigns.ch'
             Hallo, ich bin Michael.
           </h1>
           <div class="flex flex-wrap gap-2 mb-6">
-            {['Ingenieur', 'Entwickler', 'Berater'].map((tag) => (
+            {['Ingenieur', 'Entwickler', 'Berater', 'Datenschutz'].map((tag) => (
               <span class="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary">
                 {tag}
               </span>
@@ -159,6 +159,16 @@ const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://klauserdesigns.ch'
             und wartbarer ist, arbeite ich mit Regeln und Abläufen. Beide
             Ansätze haben ihren Platz. Die Kunst liegt darin zu wissen,
             wann welcher sinnvoll ist.
+          </p>
+          <p>
+            Wer Daten automatisiert, muss auch wissen, welche Regeln dafür
+            gelten. Deshalb habe ich mich intensiv mit dem neuen Schweizer
+            Datenschutzgesetz auseinandergesetzt und ein eigenes
+            Compliance-Tool gebaut:
+            <a href="https://ndsg-check.ch" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:underline">ndsg-check.ch</a>
+            prüft in wenigen Minuten, wo ein Unternehmen beim nDSG steht.
+            Die meisten IT-Berater machen Automatisierung oder Datenschutz.
+            Ich mache beides.
           </p>
         </div>
       </div>

@@ -7,13 +7,13 @@ import LeistungsBlock from '../components/ui/LeistungsBlock.astro'
 ---
 
 <BaseLayout
-  title="Prozessautomatisierung & Datenlösungen für Schweizer KMUs"
-  description="Datenflüsse automatisieren, Reporting und Systemmigrationen für Schweizer KMUs."
+  title="Prozessautomatisierung, Datenlösungen & nDSG-Compliance für Schweizer KMUs"
+  description="Datenflüsse automatisieren, Reporting, Systemmigrationen und Datenschutz-Compliance für Schweizer KMUs."
 >
   <StructuredData
     type="service"
-    pageTitle="Prozessautomatisierung & Datenlösungen für Schweizer KMUs"
-    pageDescription="Datenflüsse automatisieren, Reporting und Systemmigrationen für Schweizer KMUs."
+    pageTitle="Prozessautomatisierung, Datenlösungen & nDSG-Compliance für Schweizer KMUs"
+    pageDescription="Datenflüsse automatisieren, Reporting, Systemmigrationen und Datenschutz-Compliance für Schweizer KMUs."
     pagePath="/kmu"
   />
 
@@ -50,6 +50,7 @@ import LeistungsBlock from '../components/ui/LeistungsBlock.astro'
             'Daten müssen manuell zwischen Systemen kopiert werden',
             'Beim Systemwechsel hofft jemand, dass nichts verloren geht',
             'Kein einheitliches Bild über alle Daten',
+            'Unsicher, ob Ihre Datenverarbeitung nDSG-konform ist',
           ].map((item) => (
             <div class="flex items-center gap-3 rounded-md bg-white/[0.06] border border-white/10 px-4 py-3">
               <span class="w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" />
@@ -93,6 +94,11 @@ import LeistungsBlock from '../components/ui/LeistungsBlock.astro'
           nummer={4}
           titel="Massgeschneiderte Software"
           text="Wenn Standardlösungen nicht passen: Backend-Systeme, Middleware, Integrationen. Gebaut für Ihren konkreten Ablauf."
+        />
+        <LeistungsBlock
+          nummer={5}
+          titel="Datenschutz & nDSG-Compliance"
+          text="Sie wissen genau, wo Sie beim nDSG stehen, was fehlt, und was als Erstes umgesetzt werden muss. Keine Theorie, sondern ein klarer Massnahmenplan mit den nötigen Dokumenten."
         />
       </div>
     </Container>

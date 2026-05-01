@@ -26,7 +26,7 @@ const organizationSchema = {
   url: baseUrl,
   logo: `${baseUrl}/logo.png`,
   description:
-    'Automatisierung, massgeschneiderte Tools und Datenlösungen für Schweizer Verbände und KMUs. Spezialisiert auf Prozessautomatisierung, individuelle Software-Entwicklung und Datenintegration.',
+    'Automatisierung, Datenlösungen und Datenschutz-Compliance für Schweizer Verbände und KMUs. Spezialisiert auf Prozessautomatisierung, individuelle Software-Entwicklung, Datenintegration und nDSG-Compliance.',
   email: 'michael@klauserdesigns.ch',
   telephone: '+41796915598',
   address: {
@@ -40,7 +40,7 @@ const organizationSchema = {
   founder: {
     '@type': 'Person',
     name: 'Michael Klauser',
-    jobTitle: 'Systemtechnik-Ingenieur & Automatisierungs-Spezialist',
+    jobTitle: 'Systemtechnik-Ingenieur, Automatisierungs- & Datenschutz-Spezialist',
     description:
       'IT-Experte mit über 20 Jahren Erfahrung in Software-Entwicklung, Systemintegration und Prozessautomatisierung',
   },
@@ -57,7 +57,7 @@ const websiteSchema = {
   url: baseUrl,
   name: 'klauser designs',
   description:
-    'Automatisierung, massgeschneiderte Tools und Datenlösungen für Schweizer Verbände und KMUs',
+    'Automatisierung, Datenlösungen und Datenschutz-Compliance für Schweizer Verbände und KMUs',
   publisher: { '@id': `${baseUrl}/#organization` },
   inLanguage: 'de-CH',
 }
@@ -65,12 +65,12 @@ const websiteSchema = {
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  serviceType: 'Automatisierung & Datenlösungen',
+  serviceType: 'Automatisierung, Datenlösungen & Datenschutz-Compliance',
   provider: { '@id': `${baseUrl}/#organization` },
   areaServed: { '@type': 'Country', name: 'Switzerland' },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Automatisierung, Tools & Datenlösungen',
+    name: 'Automatisierung, Tools, Datenlösungen & Datenschutz',
     itemListElement: [
       {
         '@type': 'Offer',
@@ -104,6 +104,14 @@ const serviceSchema = {
           description: 'Sichere Datenmigration und Systemwechsel ohne Datenverlust',
         },
       },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Datenschutz & nDSG-Compliance',
+          description: 'nDSG-Compliance-Prüfung, Datenschutzerklärung, Verarbeitungsverzeichnis und technisch-organisatorische Massnahmen für Schweizer Unternehmen',
+        },
+      },
     ],
   },
 }
@@ -117,7 +125,7 @@ const localBusinessSchema = {
   email: 'michael@klauserdesigns.ch',
   telephone: '+41796915598',
   description:
-    'Freelance Spezialist für Prozessautomatisierung, massgeschneiderte Software und Datenlösungen für Verbände und KMUs in der Deutschschweiz. Selbstständig seit 2013.',
+    'Freelance Spezialist für Prozessautomatisierung, Datenlösungen und Datenschutz-Compliance (nDSG) für Verbände und KMUs in der Deutschschweiz. Selbstständig seit 2013.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Notkerstrasse 14',
@@ -139,6 +147,8 @@ const localBusinessSchema = {
     'C#',
     'SQL Server',
     'KI-Integration',
+    'nDSG-Compliance',
+    'Datenschutzberatung',
   ],
   founder: { '@id': `${baseUrl}/#person` },
 }
@@ -150,7 +160,7 @@ const personSchema = {
   name: 'Michael Klauser',
   jobTitle: 'Dipl. Systemtechnik-Ingenieur FH',
   description:
-    'Freelance IT-Spezialist für Prozessautomatisierung, Datenlösungen und massgeschneiderte Software. Selbstständig seit 2013.',
+    'Freelance IT-Spezialist für Prozessautomatisierung, Datenlösungen, Datenschutz-Compliance und massgeschneiderte Software. Selbstständig seit 2013.',
   url: `${baseUrl}/ueber-mich`,
   email: 'michael@klauserdesigns.ch',
   worksFor: { '@id': `${baseUrl}/#organization` },
@@ -176,6 +186,8 @@ const personSchema = {
     'Microsoft Dynamics 365',
     'SAP-Integration',
     'KI-Integration',
+    'nDSG-Compliance',
+    'Datenschutzberatung',
   ],
 }
 
@@ -199,7 +211,7 @@ const webPageSchema = {
   name: pageTitle || 'klauser designs & coaching',
   description:
     pageDescription ||
-    'Automatisierung, massgeschneiderte Tools und Datenlösungen für Schweizer Verbände und KMUs',
+    'Automatisierung, Datenlösungen und Datenschutz-Compliance für Schweizer Verbände und KMUs',
   isPartOf: { '@id': `${baseUrl}/#website` },
   about: { '@id': `${baseUrl}/#organization` },
   inLanguage: 'de-CH',

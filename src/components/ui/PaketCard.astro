@@ -9,6 +9,7 @@ export interface Props {
   ctaHref: string
   highlight?: boolean
   badge?: string
+  external?: boolean
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   ctaHref,
   highlight = false,
   badge,
+  external = false,
 } = Astro.props
 ---
 
@@ -53,7 +55,7 @@ const {
             {preis}
           </p>
         </div>
-        <a href={ctaHref} class="flex-shrink-0 self-start">
+        <a href={ctaHref} class="flex-shrink-0 self-start" {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
           <button
             type="button"
             class={`inline-flex items-center justify-center rounded-md font-medium transition-all shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 text-base px-4 py-2 min-h-[44px] ${
