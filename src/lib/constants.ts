@@ -29,6 +29,7 @@ export const NAVIGATION_ITEMS = [
   { label: 'Angebot', href: '/angebot' },
   { label: 'Referenzen', href: '/referenzen' },
   { label: 'Über mich', href: '/ueber-mich' },
+  { label: 'Kontakt', href: '/kontakt' },
 ]
 
 export const LEGAL_PAGES = [
